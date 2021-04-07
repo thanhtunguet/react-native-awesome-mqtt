@@ -50,9 +50,13 @@ declare namespace AwesomeMqtt {
 
     disconnect(clientRef: ClientRef): void;
 
+    reconnect(clientRef: ClientRef): void;
+
     isConnected(clientRef: ClientRef): Promise<boolean>;
 
     isSubscribed(clientRef: ClientRef, topic: string): Promise<boolean>;
+
+    removeClient(clientRef: ClientRef): void;
 
     disconnectAll(): void;
   }
@@ -290,5 +294,29 @@ export default class AwesomeMqtt implements AwesomeMqtt.EventHandlers {
    */
   public static disconnectAll(): void {
     AwesomeMqttModule.disconnectAll();
+  }
+
+  /**
+   * Client reconnect
+   */
+  public reconnect(): void {
+    AwesomeMqttModule.reconnect(this.clientRef);
+  }
+
+  /**
+   * Remove a client
+   */
+  public static removeClient(clientRef: AwesomeMqtt.ClientRef): void {
+    const index: number = this.clients.findIndex(
+      (client) => client.clientRef === clientRef
+    );
+    if (index >= 0) {
+      this.clients.splice(index, 1);
+    }
+    if (this.clients.length === 0) {
+      this.emitterSubscription.remove();
+      this.emitterSubscription = null;
+    }
+    AwesomeMqttModule.removeClient(clientRef);
   }
 }

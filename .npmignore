@@ -1,0 +1,16 @@
+.circleci
+.git
+__fixtures__
+__mocks__
+__tests__
+android/build
+example
+ios/build
+lib/typescript/example
+node_modules
+.editorconfig
+.gitattributes
+.gitignore
+CONTRIBUTING.md
+LICENSE
+yarn.lock

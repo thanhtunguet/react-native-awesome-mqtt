@@ -2,5 +2,5 @@ rootProject.name = 'AwesomeMqttExample'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
 
-include ':reactnativeawesomemqtt'
-project(':reactnativeawesomemqtt').projectDir = new File(rootProject.projectDir, '../../android')
+include ':react-native-awesome-mqtt'
+project(':react-native-awesome-mqtt').projectDir = new File(rootProject.projectDir, '../../android')

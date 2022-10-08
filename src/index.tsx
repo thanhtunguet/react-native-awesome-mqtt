@@ -2,6 +2,7 @@ import {
   EmitterSubscription,
   NativeEventEmitter,
   NativeModules,
+  Platform,
 } from 'react-native';
 import urlParse from 'url-parse';
 import { Subject } from 'rxjs';
@@ -300,7 +301,9 @@ export default class AwesomeMqtt implements AwesomeMqtt.EventHandlers {
    * Client reconnect
    */
   public reconnect(): void {
-    AwesomeMqttModule.reconnect(this.clientRef);
+    if (Platform.OS === 'android') {
+      AwesomeMqttModule.reconnect(this.clientRef);
+    }
   }
 
   /**

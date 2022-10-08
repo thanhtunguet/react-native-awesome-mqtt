@@ -4,4 +4,12 @@
 
 @interface AwesomeMqtt : RCTEventEmitter <RCTBridgeModule>
 
+- (void) startObserving;
+
+- (void) stopObserving;
+
+- (void) invalidate;
+
+- (void) sendEventWithName:(NSString *)name body:(id)body;
+
 @end

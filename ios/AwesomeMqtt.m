@@ -44,13 +44,13 @@ RCT_EXPORT_MODULE();
 }
 
 // Will be called when this module's first listener is added.
--(void)startObserving {
+- (void)startObserving {
     hasListeners = YES;
     // Set up any upstream listeners or background tasks as necessary
 }
 
 // Will be called when this module's last listener is removed, or on dealloc.
--(void)stopObserving {
+- (void)stopObserving {
     hasListeners = NO;
     // Remove upstream listeners, stop unnecessary background tasks
 }
@@ -60,7 +60,6 @@ RCT_EXPORT_METHOD(createClient:(NSDictionary *) options
                   rejecter:(RCTPromiseRejectBlock)reject) {
     
     NSString *clientRef = [[NSProcessInfo processInfo] globallyUniqueString];
-    
     MqttClient *client = [[MqttClient allocWithZone: nil] initWithEmitter:self options:options clientRef:clientRef];
     
     [[self clients] setObject:client forKey:clientRef];
@@ -118,8 +117,6 @@ RCT_EXPORT_METHOD(getTopics:(nonnull NSString *) clientRef resolver:(RCTPromiseR
     }
 }
 
-
-
 RCT_EXPORT_METHOD(disconnectAll) {
     if (self.clients.count > 0) {
         for(NSString* aClientRef in self.clients) {
@@ -141,7 +138,6 @@ RCT_EXPORT_METHOD(publish:(nonnull NSString *) clientRef topic:(NSString *)topic
                                                 data:[data dataUsingEncoding:NSUTF8StringEncoding]
                                                  qos:qos
                                               retain:retain];
-    
 }
 
 - (void)invalidate

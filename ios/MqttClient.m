@@ -124,28 +124,28 @@
                                        body:@{@"event": @"closed",
                                               @"clientRef": self.clientRef,
                                               @"message": @"closed"
-                                       }];
+                                            }];
             break;
         case MQTTSessionManagerStateClosing:
             [self.emitter sendEventWithName:@"mqtt_events"
                                        body:@{@"event": @"closing",
                                               @"clientRef": self.clientRef,
                                               @"message": @"closing"
-                                       }];
+                                            }];
             break;
         case MQTTSessionManagerStateConnected:
             [self.emitter sendEventWithName:@"mqtt_events"
                                        body:@{@"event": @"connect",
                                               @"clientRef": self.clientRef,
                                               @"message": @"connected"
-                                       }];
+                                            }];
             break;
         case MQTTSessionManagerStateConnecting:
             [self.emitter sendEventWithName:@"mqtt_events"
                                        body:@{@"event": @"connecting",
                                               @"clientRef": self.clientRef,
                                               @"message": @"connecting"
-                                       }];
+                                            }];
             break;
         case MQTTSessionManagerStateError: {
             NSError *lastError = self.manager.lastErrorCode;
@@ -154,7 +154,7 @@
                                        body:@{@"event": @"error",
                                               @"clientRef": self.clientRef,
                                               @"message": errorMsg
-                                       }];
+                                            }];
             break;
         }
         case MQTTSessionManagerStateStarting:
@@ -170,7 +170,7 @@
                                body:@{@"event": @"msgSent",
                                       @"clientRef": self.clientRef,
                                       @"message": codeString
-                               }];
+                                    }];
 }
 
 - (void) disconnect {
@@ -240,14 +240,14 @@
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     [self.emitter sendEventWithName:@"mqtt_events"
                                body:@{
-                                   @"event": @"message",
-                                   @"clientRef": self.clientRef,
-                                   @"message": @{
-                                           @"topic": topic,
-                                           @"data": dataString,
-                                           @"retain": [NSNumber numberWithBool:retained]
-                                   }
-                               }];
+        @"event": @"message",
+        @"clientRef": self.clientRef,
+        @"message": @{
+            @"topic": topic,
+            @"data": dataString,
+            @"retain": [NSNumber numberWithBool:retained]
+        }
+    }];
     
 }
 

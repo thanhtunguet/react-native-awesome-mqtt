@@ -177,6 +177,10 @@ export default class AwesomeMqtt implements AwesomeMqtt.EventHandlers {
     return new AwesomeMqtt(clientRef, debug);
   }
 
+  public get ref(): string {
+    return this.clientRef;
+  }
+
   public constructor(
     private readonly clientRef: string,
     private readonly debug: boolean = false

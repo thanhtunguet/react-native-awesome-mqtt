@@ -181,6 +181,10 @@ export default class AwesomeMqtt implements AwesomeMqtt.EventHandlers {
     return this.clientRef;
   }
 
+  public remove() {
+    AwesomeMqttModule.removeClient(this.clientRef);
+  }
+
   public constructor(
     private readonly clientRef: string,
     private readonly debug: boolean = false

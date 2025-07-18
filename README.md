@@ -2,6 +2,8 @@
 
 A powerful and easy-to-use MQTT client for React Native. This library provides a simple and consistent API for both Android and iOS, based on the popular Paho (Android) and MQTT-Client-Framework (iOS) libraries.
 
+[![codecov](https://codecov.io/gh/thanhtunguet/react-native-awesome-mqtt/graph/badge.svg?token=KSERW01ALZ)](https://codecov.io/gh/thanhtunguet/react-native-awesome-mqtt)
+
 ## Features
 
 -   ✅ Supports both Android and iOS

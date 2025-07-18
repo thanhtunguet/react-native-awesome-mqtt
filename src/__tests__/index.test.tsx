@@ -43,11 +43,8 @@ describe('AwesomeMqtt', () => {
   });
   afterEach(() => {
     jest.clearAllMocks();
+    AwesomeMqtt.clients.forEach((client) => client.remove());
     AwesomeMqtt.clients.length = 0;
-    if (AwesomeMqtt.emitterSubscription) {
-      AwesomeMqtt.emitterSubscription.remove();
-      AwesomeMqtt.emitterSubscription = null;
-    }
   });
 
   it('should create a client', async () => {
